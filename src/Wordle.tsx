@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Guess from "./Guess.tsx";
 import LetterBank from "./LetterBank.tsx";
 import Header from "./Header.tsx";
+import RICIBs from 'react-individual-character-input-boxes';
 
 export default function Wordle() {
   //Interfaces
@@ -11,9 +12,10 @@ export default function Wordle() {
     isGuessed: boolean;
   }
 
-  const LIGHT_GRAY = "#E6E6E6";
+  const LIGHT_GRAY = "#d3d6da";
   const YELLOW = "#c9b458";
-  const DARK_GRAY = "#6F6F6F";
+  const DARK_GRAY = "#787c7e";
+  const GREEN = "#6aaa64";
 
   //State variables
   const [newGuess, setNewGuess] = useState("");
@@ -28,7 +30,7 @@ export default function Wordle() {
   const [gameStatus, setGameStatus] = useState("");
 
   //Other variables
-  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const alphabet = "qwertyuiopasdfghjklzxcvbnm";
   const alphabetLetters = alphabet.split("");
   const randomNumber = Math.floor(Math.random() * 3103);
 
@@ -105,9 +107,9 @@ export default function Wordle() {
 
     newLetterObjs.map((x, i) => {
       if (x.text === solution[i]) {
-        x.color = "green";
+        x.color = GREEN;
       } else if (solutionSet.has(x.text)) {
-        x.color = "yellow";
+        x.color = YELLOW;
       } else {
         x.color = DARK_GRAY;
       }
@@ -122,7 +124,7 @@ export default function Wordle() {
     abtemp.map((x) => {
       for (let i = 0; i < newLetterObjs.length; i++) {
         if (newLetterObjs[i].text === x.text) {
-          if (x.color !== "green") {
+          if (x.color !== GREEN) {
             x.color = newLetterObjs[i].color;
             setAlphabetLetterObjs(abtemp);
           }
@@ -170,6 +172,10 @@ export default function Wordle() {
     setGameStatus("");
   }
 
+  function handleOutput(a){
+    setNewGuess(a);
+  }
+
   return (
     <>
       <Header />
@@ -187,9 +193,6 @@ export default function Wordle() {
           disabled={isResetEnabled}
           onKeyDown={handleKeyDown}
         />
-        <button disabled={isResetEnabled} onClick={makeNewGuess}>
-          Submit
-        </button>
         <LetterBank alphabet={alphabetLetterObjs} />
         {guessesLeft !== 0 ? (
           <p>Guesses Left: {guessesLeft}</p>

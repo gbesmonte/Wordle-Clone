@@ -1,23 +1,21 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+h1 {
+  font-family: "DM Serif Text", serif;
+  color: black;
+  font-size: 2em;
+  font-weight:bold;
 }
 
-h1 {
+.header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:50px;
+}
+
+.wordle{
   font-family: Helvetica, sans-serif;
-  color: black;
-  font-size: 3.2em;
-  line-height: 1.1;
+  color:black;
+  height:100vh;
 }
 
 button {
@@ -27,7 +25,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #dddddd;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -40,6 +38,9 @@ button:focus-visible {
 }
 
 .letter {
+  display:flex;
+  justify-content: center;
+  align-items: center;
   background-color: gray;
   height: 50px;
   width: 50px;
@@ -53,17 +54,26 @@ button:focus-visible {
   gap: 2px;
   width: 290px;
 }
+
 .letter-key {
+  display:flex;
+  font-family: Helvetica, sans-serif;
   background-color: gray;
-  height: 20px;
-  width: 20px;
-  font-size: 10px;
+  justify-content: center;
+  align-items: center;
+  height: 58px;
+  width: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius:10%;
 }
+
 .keyboard-vis {
   display: flex;
+  gap: 4px;
   justify-content: center;
   flex-wrap: wrap;
-  width: 200px;
+  width:550px;
 }
 .wordle {
   display: flex;
@@ -78,15 +88,3 @@ button:focus-visible {
   gap: 2px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}

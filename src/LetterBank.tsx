@@ -9,7 +9,7 @@ export default function LetterBank(props) {
             className="letter-key"
             style={{ backgroundColor: x.color }}
           >
-            {x.text}
+            {x.text.toUpperCase()}
           </div>
         ))}
       </div>
